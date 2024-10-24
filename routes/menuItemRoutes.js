@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MenuItem = require("../modals/menuItem");
+const menuItem = require("../modals/menuItem");
 
 
 
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     const data = req.body; // Assingn the request body contains the MenuItem data
 
     // create a new MenuItem object using the mongoose modal
-    const newMenuItem = new MenuItem(data);
+    const newMenuItem = new menuItem(data);
 
     // save new MenuItem document to the database
     const item = await newMenuItem.save();
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 // Get method to get all the MenuItems
 router.get("/", async(req, res) => {
     try {
-        const item = await MenuItem.find();
+        const item = await menuItem.find();
         console.log("data fetched");
         res.status(200).json(item);
     } catch (error) {
@@ -43,7 +43,7 @@ router.get("/:tasteType", async (req, res) => {
   try {
     const tasteType = req.params.tasteType; // extract the taste from the URL parameter
     if (tasteType == "sweet" || tasteType == "sour" || tasteType == "spicy") {
-      const item = await MenuItem.find({ taste: tasteType });
+      const item = await menuItem.find({ taste: tasteType });
       console.log("Items fetched");
       res.status(200).json(item);
     } else {
@@ -61,7 +61,7 @@ router.put("/:modified", async (req, res) => {
     const updatedMenuItem = req.body; // Updated data for the MenuItem
 
     // Find and update the MenuItem document
-    const modifiedItem = await MenuItem.findByIdAndUpdate(
+    const modifiedItem = await menuItem.findByIdAndUpdate(
       modified,
       updatedMenuItem,
       {
@@ -87,7 +87,7 @@ router.put("/:modified", async (req, res) => {
 router.delete("/:deleted", async (req, res) => {
   try {
     const deleted = req.params.deleted;  // Extract the Id from the URL parameter
-    const deletedMenuItem = await MenuItem.findByIdAndDelete(deleted);
+    const deletedMenuItem = await menuItem.findByIdAndDelete(deleted);
 
     // Find and delete the MenuItem document
     if (!deletedMenuItem) {
