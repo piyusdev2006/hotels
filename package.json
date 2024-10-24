@@ -11,8 +11,10 @@
   "description": "node_tutorial",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "lodash": "^4.17.21",
+    "mongodb": "^6.10.0",
     "mongoose": "^8.7.0"
   },
   "devDependencies": {

@@ -5,9 +5,11 @@
 const express = require("express");
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
   res.send("Building my first web server with Node.js");
@@ -46,8 +48,10 @@ const menuItemRoutes = require("./routes/menuItemRoutes");
 app.use("/menuItem", menuItemRoutes);
 
 
+
+
 // here the server listen to port 3000
-app.listen(3000 , () => {
+app.listen(PORT , () => {
     console.log("\n Server started on port 3000");
 });
 
