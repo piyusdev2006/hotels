@@ -31,6 +31,6 @@ const menuSchema = new mongoose.Schema({
 
 });
 
-const MenuItem = mongoose.model("MenuItem", menuSchema);
+const menuItem = mongoose.model("MenuItem", menuSchema);
 
-module.exports = MenuItem;
+module.exports = menuItem;
