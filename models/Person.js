@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 
 // Define the person schema
@@ -40,6 +40,6 @@ const personSchema = new mongoose.Schema({
 
 
 // create the person model
-const Person = mongoose.model("Person", personSchema);
+const Person = mongoose.model('Person', personSchema);
 
 module.exports = Person;
